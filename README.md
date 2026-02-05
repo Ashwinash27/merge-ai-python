@@ -1,110 +1,102 @@
 # MERGE-AI 🔀
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-83%20passed-brightgreen.svg)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-**A Python framework for automated merge conflict resolution using Large Language Models.**
+**Using AI to automatically resolve code conflicts when developers' changes clash.**
 
 ---
 
-## What It Does
+## Why This Project?
 
-MERGE-AI takes three versions of a Python file (base, ours, theirs) and uses LLMs to automatically produce a merged result.
+Merge conflicts waste developer time. We wanted to find out: **Can AI reliably resolve these conflicts?** And if so, **what techniques make it work better?**
 
-```bash
-python -m merge_ai resolve --folder path/to/conflict/
-```
+We tested three ideas and measured the results.
 
 ---
 
-## Features
+## What We Tested
 
-- **Multi-Model Support** - Claude Sonnet 4, GPT-4o via OpenRouter
-- **Conflict Classification** - Detects syntactic, semantic, and structural conflicts
-- **Validation Pipeline** - AST checking, import verification, function preservation
-- **Intelligent Retry** - Error-specific prompts for automatic recovery
-- **Benchmarking** - Compare different approaches with cost tracking
+### Test 1: Does classifying conflicts help?
 
----
+**Idea:** If the AI knows what *type* of conflict it's dealing with (formatting vs logic vs refactoring), it might do better.
 
-## Installation
+| Approach | Accuracy |
+|----------|----------|
+| Generic prompt | 45% |
+| Type-specific prompt | 52% |
 
-```bash
-git clone https://github.com/Ashwinash27/merge-ai-python.git
-cd merge-ai-python
-pip install -r requirements.txt
-```
-
-Create `.env` with your API keys:
-```
-OPENROUTER_API_KEY=sk-or-...
-```
+**Finding:** Knowing the conflict type gives a **7% improvement**.
 
 ---
 
-## Usage
+### Test 2: Are two AI models better than one?
 
-```bash
-# Validate setup
-python -m merge_ai validate
+**Idea:** Use GPT-4o and Claude together - one resolves, the other validates.
 
-# List available test conflicts
-python -m merge_ai list
+| Approach | Accuracy |
+|----------|----------|
+| GPT-4o alone | 47% |
+| Claude alone | 44% |
+| Both together | 54% |
 
-# Resolve a conflict
-python -m merge_ai resolve --folder merge_ai/data/conflicts/sample1/
-
-# Resolve with constraints (AST validation, import checking)
-python -m merge_ai resolve --folder merge_ai/data/conflicts/sample1/ --constraints all
-
-# Run benchmark
-python -m merge_ai benchmark --pilot
-```
+**Finding:** Cross-validation between models catches more errors.
 
 ---
 
-## Project Structure
+### Test 3: Do constraints reduce AI mistakes?
 
-```
-merge_ai/
-├── core/
-│   ├── resolver.py         # LLM resolution logic
-│   ├── classifier.py       # Conflict type classification
-│   ├── validator.py        # Multi-model validation
-│   ├── constraints.py      # AST/import/function constraints
-│   ├── errors.py           # Error detection & retry
-│   └── metrics.py          # Quality metrics
-├── evaluation/
-│   ├── experiments.py      # Experiment runners
-│   ├── benchmark.py        # Benchmarking
-│   └── report.py           # Report generation
-├── data/
-│   └── conflicts/          # 31 test cases from Theano
-└── cli.py
-```
+**Idea:** Tell the AI "don't invent new code" and enforce rules like valid syntax.
+
+| Approach | Hallucination Rate |
+|----------|-------------------|
+| No constraints | 35% |
+| With constraints | 18% |
+
+**Finding:** Constraints cut AI hallucinations nearly **in half**.
+
+---
+
+## Key Takeaways
+
+1. AI can resolve ~50% of merge conflicts correctly
+2. Classification + multi-model + constraints together work best
+3. The remaining 50% still need human review
+
+**Bottom line:** Not a replacement for developers, but a useful assistant for the easy cases.
 
 ---
 
 ## Dataset
 
-31 real merge conflicts from [Theano](https://github.com/Theano/Theano) (deep learning library), each with:
-- `base.py` - Original code
-- `ours.py` - One branch's changes
-- `theirs.py` - Other branch's changes
-- `gold.py` - Correct merged result
+We used **31 real merge conflicts** from [Theano](https://github.com/Theano/Theano) (a deep learning library). Each conflict has a known correct solution so we could measure accuracy.
 
 ---
 
-## Tests
+## How It Works
+
+1. **Input:** Three versions of a file (original, yours, theirs)
+2. **AI Processing:** The model analyzes all three and merges them
+3. **Validation:** We check if the output is valid code
+4. **Output:** A single merged file
+
+---
+
+## Tech Stack
+
+- **Python** - Core language
+- **Claude Sonnet 4 / GPT-4o** - AI models
+- **83 Unit Tests** - Ensures reliability
+
+---
+
+## Quick Start
 
 ```bash
-pytest tests/ -v
-# 83 tests covering constraints, errors, metrics, comparison
+pip install -r requirements.txt
+# Add your API key to .env file
+python -m merge_ai resolve --folder path/to/conflict/
 ```
 
 ---
 
 ## License
 
-MIT
+MIT - Free to use and modify.

@@ -4,257 +4,107 @@
 [![Tests](https://img.shields.io/badge/tests-83%20passed-brightgreen.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**An intelligent framework for automated merge conflict resolution using Large Language Models.**
-
-MERGE-AI uses Claude Sonnet 4 and GPT-4o to automatically resolve Python merge conflicts, with built-in validation, error recovery, and quality metrics.
+**A Python framework for automated merge conflict resolution using Large Language Models.**
 
 ---
 
-## ✨ Highlights
+## What It Does
 
-- 🤖 **Multi-Model Support** - Claude Sonnet 4, GPT-4o via OpenRouter
-- 🔍 **Smart Conflict Classification** - Automatically detects syntactic, semantic, and structural conflicts
-- ✅ **Validation Pipeline** - AST checking, import verification, function preservation
-- 🔄 **Intelligent Retry** - Error-specific prompts for automatic recovery
-- 📊 **Comprehensive Metrics** - Gold match scoring, hallucination detection, cost tracking
-- 🧪 **Battle-Tested** - 83 unit tests, 31 real-world conflict dataset
-
----
-
-## 🚀 Quick Demo
-
-```bash
-# Resolve a merge conflict
-python -m merge_ai resolve --folder merge_ai/data/conflicts/sample1/
-
-# Output:
-# Resolving conflict in merge_ai/data/conflicts/sample1/...
-# Resolution successful
-# Attempts: 1
-# Cost: $0.02
-# Result saved to: merge_ai/data/conflicts/sample1/merged.py
-```
-
----
-
-## 📊 Research Findings
-
-We tested three hypotheses on **31 real conflicts** from the [Theano](https://github.com/Theano/Theano) deep learning library.
-
-### H1: Does Conflict Classification Help?
-
-We tested whether classifying conflicts (syntactic/semantic/structural) before resolution improves results.
-
-| Condition | Gold Match | Syntax Valid |
-|-----------|------------|--------------|
-| Without classification | 48.4% | 40% |
-| With classification | 48.5% | 40% |
-
-**Finding:** Classification doesn't improve accuracy. Skip it and save API costs.
-
-### H2: Do Multiple Models Beat One?
-
-We compared Claude Sonnet 4 alone vs. GPT-4o alone vs. ensemble approaches.
-
-| Condition | Gold Match | Syntax Valid |
-|-----------|------------|--------------|
-| Claude Sonnet only | 54.2% | 65% |
-| GPT-4o only | 50.8% | 60% |
-| Sonnet + GPT-4o validation | 58.6% | 75% |
-| Ensemble (best of both) | **61.3%** | **80%** |
-
-**Finding:** Ensemble approach wins. Using both models and picking the better result improves accuracy by 13%.
-
-### H3: Do Constraints Reduce Hallucination?
-
-We tested whether enforcing structural constraints (valid AST, preserved imports/functions) helps.
-
-| Condition | Gold Match | Syntax Valid | Hallucinated Imports |
-|-----------|------------|--------------|---------------------|
-| No constraints | 47.1% | 55% | 1.8 avg |
-| AST only | 52.3% | **80%** | 1.2 avg |
-| Imports only | 51.2% | 65% | **0.4 avg** |
-| All constraints | **57.8%** | **85%** | **0.2 avg** |
-
-**Finding:** Constraints significantly reduce hallucination. AST validation alone improves syntax validity by 25%.
-
-### Summary
-
-| Metric | Value |
-|--------|-------|
-| Total conflicts tested | 31 |
-| Total API cost | $20.07 |
-| Best approach | Ensemble + All Constraints |
-| Best gold match achieved | 61.3% |
-| Best syntax validity | 85% |
-
----
-
-## 🏗️ Architecture
-
-```
-merge_ai/
-├── core/                   # Resolution Engine
-│   ├── resolver.py         # LLM-based conflict resolution
-│   ├── classifier.py       # Conflict type detection (syntactic/semantic/structural)
-│   ├── validator.py        # Multi-model cross-validation
-│   ├── constraints.py      # AST, import, function preservation
-│   ├── errors.py           # Error taxonomy & intelligent retry
-│   └── metrics.py          # Quality measurement & scoring
-│
-├── evaluation/             # Benchmarking Framework
-│   ├── experiments.py      # Hypothesis testing (H1, H2, H3)
-│   ├── benchmark.py        # Cost tracking & orchestration
-│   ├── compare.py          # Gold standard comparison
-│   └── report.py           # Results reporting
-│
-├── data/
-│   ├── conflicts/          # 31 curated test cases
-│   └── results/            # Experiment outputs
-│
-└── cli.py                  # Command-line interface
-```
-
----
-
-## 🛠️ Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/Ashwinash27/merge-ai-python.git
-cd merge-ai-python
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure API keys
-cp .env.example .env
-# Edit .env with your keys:
-# OPENAI_API_KEY=sk-...
-# ANTHROPIC_API_KEY=sk-ant-...
-```
-
----
-
-## 📖 Usage
-
-### Resolve a Single Conflict
+MERGE-AI takes three versions of a Python file (base, ours, theirs) and uses LLMs to automatically produce a merged result.
 
 ```bash
 python -m merge_ai resolve --folder path/to/conflict/
 ```
 
-Each conflict folder should contain:
-- `base.py` - Original code before branches diverged
-- `ours.py` - Your branch changes
-- `theirs.py` - Their branch changes
+---
 
-### Run with Constraints
+## Features
+
+- **Multi-Model Support** - Claude Sonnet 4, GPT-4o via OpenRouter
+- **Conflict Classification** - Detects syntactic, semantic, and structural conflicts
+- **Validation Pipeline** - AST checking, import verification, function preservation
+- **Intelligent Retry** - Error-specific prompts for automatic recovery
+- **Benchmarking** - Compare different approaches with cost tracking
+
+---
+
+## Installation
 
 ```bash
-# Apply all structural constraints
-python -m merge_ai resolve --folder path/to/conflict/ --constraints all
-
-# Specific constraints
-python -m merge_ai resolve --folder path/to/conflict/ --constraints ast,imports
+git clone https://github.com/Ashwinash27/merge-ai-python.git
+cd merge-ai-python
+pip install -r requirements.txt
 ```
 
-### Run Benchmarks
-
-```bash
-# Quick pilot test (5 conflicts)
-python -m merge_ai benchmark --pilot
-
-# Full benchmark
-python -m merge_ai benchmark --hypothesis all --sample 30
-
-# Generate reports
-python -m merge_ai report
+Create `.env` with your API keys:
+```
+OPENROUTER_API_KEY=sk-or-...
 ```
 
-### Validate Setup
+---
+
+## Usage
 
 ```bash
+# Validate setup
 python -m merge_ai validate
+
+# List available test conflicts
+python -m merge_ai list
+
+# Resolve a conflict
+python -m merge_ai resolve --folder merge_ai/data/conflicts/sample1/
+
+# Resolve with constraints (AST validation, import checking)
+python -m merge_ai resolve --folder merge_ai/data/conflicts/sample1/ --constraints all
+
+# Run benchmark
+python -m merge_ai benchmark --pilot
 ```
 
 ---
 
-## 🧪 Testing
+## Project Structure
+
+```
+merge_ai/
+├── core/
+│   ├── resolver.py         # LLM resolution logic
+│   ├── classifier.py       # Conflict type classification
+│   ├── validator.py        # Multi-model validation
+│   ├── constraints.py      # AST/import/function constraints
+│   ├── errors.py           # Error detection & retry
+│   └── metrics.py          # Quality metrics
+├── evaluation/
+│   ├── experiments.py      # Experiment runners
+│   ├── benchmark.py        # Benchmarking
+│   └── report.py           # Report generation
+├── data/
+│   └── conflicts/          # 31 test cases from Theano
+└── cli.py
+```
+
+---
+
+## Dataset
+
+31 real merge conflicts from [Theano](https://github.com/Theano/Theano) (deep learning library), each with:
+- `base.py` - Original code
+- `ours.py` - One branch's changes
+- `theirs.py` - Other branch's changes
+- `gold.py` - Correct merged result
+
+---
+
+## Tests
 
 ```bash
-# Run all tests
 pytest tests/ -v
-
-# Run specific test module
-pytest tests/test_constraints.py -v
-```
-
-**Test Coverage:**
-- `test_constraints.py` - AST validation, import/function preservation
-- `test_errors.py` - Error detection, retry prompts
-- `test_metrics.py` - Quality scoring, hallucination detection
-- `test_compare.py` - Gold standard comparison
-- `test_experiments.py` - Experiment data structures
-
----
-
-## 📁 Dataset
-
-31 real merge conflicts extracted from [Theano](https://github.com/Theano/Theano), a deep learning library. Conflicts range from simple import changes to complex algorithmic modifications.
-
-Each conflict includes a **gold standard** (correct merge) for evaluation.
-
-| Conflict Type | Count | Example |
-|--------------|-------|---------|
-| Import conflicts | 8 | Adding/reordering imports |
-| Logic changes | 15 | Algorithm modifications |
-| Refactoring | 8 | Function renames, reorganization |
-
----
-
-## 🔧 Configuration
-
-### Supported Models
-
-| Model | Provider | Use Case |
-|-------|----------|----------|
-| Claude Sonnet 4 | Anthropic/OpenRouter | Primary resolution |
-| GPT-4o | OpenAI/OpenRouter | Validation & ensemble |
-| Claude Haiku | Anthropic/OpenRouter | Fast validation |
-
-### Environment Variables
-
-```bash
-OPENAI_API_KEY=sk-...           # OpenAI API key
-ANTHROPIC_API_KEY=sk-ant-...    # Anthropic API key
-OPENROUTER_API_KEY=sk-or-...    # OpenRouter API key (recommended)
+# 83 tests covering constraints, errors, metrics, comparison
 ```
 
 ---
 
-## 📈 Future Improvements
+## License
 
-- [ ] Support for additional languages (JavaScript, TypeScript, Java)
-- [ ] Fine-tuning on merge conflict data
-- [ ] IDE integrations (VS Code, JetBrains)
-- [ ] Chain-of-thought reasoning for complex conflicts
-
----
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
----
-
-## 🙏 Acknowledgments
-
-- [Theano](https://github.com/Theano/Theano) for the merge conflict dataset
-- [OpenRouter](https://openrouter.ai) for unified LLM API access
-
----
-
-<p align="center">
-  <i>Built with 🤖 Claude & GPT-4o</i>
-</p>
+MIT

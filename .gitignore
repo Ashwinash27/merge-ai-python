@@ -45,3 +45,4 @@ data/conflict/
 
 # Keep results but ignore large files
 *.log
+CLAUDE.md

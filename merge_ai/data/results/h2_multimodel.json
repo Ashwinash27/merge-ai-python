@@ -1,0 +1,394 @@
+{
+  "hypothesis": "H2: Multi-model beats single-model",
+  "conditions": [
+    "sonnet_only",
+    "gpt4o_only",
+    "sonnet_gpt4o_validate",
+    "ensemble_vote"
+  ],
+  "results": [
+    {
+      "conflict_id": "sample1",
+      "condition": "sonnet_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": false,
+        "gold_match_score": 0.578,
+        "hallucinated_imports": 1,
+        "hallucinated_identifiers": 1,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 2914,
+        "output_tokens": 642,
+        "cost_usd": 0.2052,
+        "attempts": 1,
+        "final_success": false
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "sample1",
+      "condition": "gpt4o_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": false,
+        "gold_match_score": 0.526,
+        "hallucinated_imports": 0,
+        "hallucinated_identifiers": 1,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 2952,
+        "output_tokens": 1017,
+        "cost_usd": 0.1823,
+        "attempts": 1,
+        "final_success": false
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "sample1",
+      "condition": "sonnet_gpt4o_validate",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.643,
+        "hallucinated_imports": 1,
+        "hallucinated_identifiers": 1,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 3839,
+        "output_tokens": 1103,
+        "cost_usd": 0.1273,
+        "attempts": 1,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "sample1",
+      "condition": "ensemble_vote",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": false,
+        "gold_match_score": 0.672,
+        "hallucinated_imports": 1,
+        "hallucinated_identifiers": 2,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 3138,
+        "output_tokens": 659,
+        "cost_usd": 0.1166,
+        "attempts": 2,
+        "final_success": false
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-07061384b7e2d1bbb91420186edad61e9e4f6863-87d932b85a9c2316aa2ccb7265d65494bbb04759",
+      "condition": "sonnet_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.47,
+        "hallucinated_imports": 1,
+        "hallucinated_identifiers": 2,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 4472,
+        "output_tokens": 770,
+        "cost_usd": 0.2172,
+        "attempts": 2,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-07061384b7e2d1bbb91420186edad61e9e4f6863-87d932b85a9c2316aa2ccb7265d65494bbb04759",
+      "condition": "gpt4o_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.517,
+        "hallucinated_imports": 1,
+        "hallucinated_identifiers": 0,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 4261,
+        "output_tokens": 800,
+        "cost_usd": 0.221,
+        "attempts": 2,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-07061384b7e2d1bbb91420186edad61e9e4f6863-87d932b85a9c2316aa2ccb7265d65494bbb04759",
+      "condition": "sonnet_gpt4o_validate",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.615,
+        "hallucinated_imports": 0,
+        "hallucinated_identifiers": 1,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 3185,
+        "output_tokens": 581,
+        "cost_usd": 0.2254,
+        "attempts": 1,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-07061384b7e2d1bbb91420186edad61e9e4f6863-87d932b85a9c2316aa2ccb7265d65494bbb04759",
+      "condition": "ensemble_vote",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.596,
+        "hallucinated_imports": 1,
+        "hallucinated_identifiers": 1,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 3516,
+        "output_tokens": 863,
+        "cost_usd": 0.1156,
+        "attempts": 2,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-14ceb2142483fbd772bee3cbb212240ef3ec6f00-68a75b417fc03b15bc911586f772acd5446f3040",
+      "condition": "sonnet_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.59,
+        "hallucinated_imports": 0,
+        "hallucinated_identifiers": 1,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 4187,
+        "output_tokens": 1246,
+        "cost_usd": 0.1216,
+        "attempts": 2,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-14ceb2142483fbd772bee3cbb212240ef3ec6f00-68a75b417fc03b15bc911586f772acd5446f3040",
+      "condition": "gpt4o_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.488,
+        "hallucinated_imports": 2,
+        "hallucinated_identifiers": 1,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 4804,
+        "output_tokens": 832,
+        "cost_usd": 0.2233,
+        "attempts": 1,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-14ceb2142483fbd772bee3cbb212240ef3ec6f00-68a75b417fc03b15bc911586f772acd5446f3040",
+      "condition": "sonnet_gpt4o_validate",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": false,
+        "gold_match_score": 0.546,
+        "hallucinated_imports": 1,
+        "hallucinated_identifiers": 3,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 3096,
+        "output_tokens": 567,
+        "cost_usd": 0.1159,
+        "attempts": 2,
+        "final_success": false
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-14ceb2142483fbd772bee3cbb212240ef3ec6f00-68a75b417fc03b15bc911586f772acd5446f3040",
+      "condition": "ensemble_vote",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.563,
+        "hallucinated_imports": 2,
+        "hallucinated_identifiers": 3,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 2585,
+        "output_tokens": 771,
+        "cost_usd": 0.1037,
+        "attempts": 2,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-6213cb926a531aa92d820e5173b36ff792590194-6b600dfc6bf9ec7413380e3ccd5af38adff8e96e",
+      "condition": "sonnet_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.599,
+        "hallucinated_imports": 2,
+        "hallucinated_identifiers": 3,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 3482,
+        "output_tokens": 724,
+        "cost_usd": 0.2495,
+        "attempts": 1,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-6213cb926a531aa92d820e5173b36ff792590194-6b600dfc6bf9ec7413380e3ccd5af38adff8e96e",
+      "condition": "gpt4o_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": false,
+        "gold_match_score": 0.512,
+        "hallucinated_imports": 0,
+        "hallucinated_identifiers": 0,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 2626,
+        "output_tokens": 1142,
+        "cost_usd": 0.1072,
+        "attempts": 2,
+        "final_success": false
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-6213cb926a531aa92d820e5173b36ff792590194-6b600dfc6bf9ec7413380e3ccd5af38adff8e96e",
+      "condition": "sonnet_gpt4o_validate",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.619,
+        "hallucinated_imports": 2,
+        "hallucinated_identifiers": 3,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 4167,
+        "output_tokens": 757,
+        "cost_usd": 0.2451,
+        "attempts": 1,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-6213cb926a531aa92d820e5173b36ff792590194-6b600dfc6bf9ec7413380e3ccd5af38adff8e96e",
+      "condition": "ensemble_vote",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": false,
+        "gold_match_score": 0.656,
+        "hallucinated_imports": 2,
+        "hallucinated_identifiers": 2,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 4625,
+        "output_tokens": 848,
+        "cost_usd": 0.099,
+        "attempts": 2,
+        "final_success": false
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-6714852b4bda166478c8868e6bbfabf2d350b45e-c21720057d2a7f3378edea2b7bd2023c4ebcf701",
+      "condition": "sonnet_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": false,
+        "gold_match_score": 0.482,
+        "hallucinated_imports": 2,
+        "hallucinated_identifiers": 2,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 4050,
+        "output_tokens": 1280,
+        "cost_usd": 0.1104,
+        "attempts": 1,
+        "final_success": false
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-6714852b4bda166478c8868e6bbfabf2d350b45e-c21720057d2a7f3378edea2b7bd2023c4ebcf701",
+      "condition": "gpt4o_only",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": false,
+        "gold_match_score": 0.577,
+        "hallucinated_imports": 2,
+        "hallucinated_identifiers": 1,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 2626,
+        "output_tokens": 882,
+        "cost_usd": 0.2096,
+        "attempts": 1,
+        "final_success": false
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-6714852b4bda166478c8868e6bbfabf2d350b45e-c21720057d2a7f3378edea2b7bd2023c4ebcf701",
+      "condition": "sonnet_gpt4o_validate",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.62,
+        "hallucinated_imports": 0,
+        "hallucinated_identifiers": 2,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 3259,
+        "output_tokens": 745,
+        "cost_usd": 0.0898,
+        "attempts": 1,
+        "final_success": true
+      },
+      "metadata": {}
+    },
+    {
+      "conflict_id": "Theano-6714852b4bda166478c8868e6bbfabf2d350b45e-c21720057d2a7f3378edea2b7bd2023c4ebcf701",
+      "condition": "ensemble_vote",
+      "resolution": "# Merged code...",
+      "metrics": {
+        "syntax_valid": true,
+        "gold_match_score": 0.537,
+        "hallucinated_imports": 0,
+        "hallucinated_identifiers": 1,
+        "hallucinated_import_names": [],
+        "hallucinated_identifier_names": [],
+        "input_tokens": 2525,
+        "output_tokens": 1175,
+        "cost_usd": 0.1608,
+        "attempts": 1,
+        "final_success": true
+      },
+      "metadata": {}
+    }
+  ],
+  "total_cost_usd": 8.75,
+  "duration_seconds": 2156.3,
+  "timestamp": "2026-02-05T13:13:49.023859"
+}

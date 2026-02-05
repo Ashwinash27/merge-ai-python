@@ -1,0 +1,15 @@
+# MERGE-AI Dependencies
+# =====================
+
+# LLM Providers
+openai>=1.0.0           # For GPT-4o resolution
+anthropic>=0.25.0       # For Claude Sonnet validation
+
+# Code Formatting & Analysis
+black>=23.0.0           # Code formatter (normalize code for comparison)
+
+# Utilities
+python-dotenv>=1.0.0    # Load API keys from .env file
+
+# Development
+pytest>=7.0.0           # Testing
